@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Mi Blog{% endblock %}
+
+{% block content %}
+   <h1>Mi Blog</h1>
+   <!--{% if posts %}-->
+      {% for post in posts %}
+       <h2>
+           <a href="{% url 'blogppal:post_detail' post.id %}">
+            {{ post.titulo_post }}
+           </a>
+       </h2>
+       <p class="date">
+         Publicado {{ post.publicado }} por {{ post.autor }}
+       </p>
+       {{ post.cuerpo_post|truncatewords:30|linebreaks }}
+      {% endfor %}
+    <!--{% else %}
+       <p>No hay post</p>
+    {% endif %}-->
+{% endblock %}
